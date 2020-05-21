@@ -41,10 +41,18 @@ class CreateProductService {
         throw new AppError('Not enough products for this operation');
     });
 
+    const mappedProducts = findedProducts.map(p => ({
+      product_id: p.id,
+      price: p.price,
+      quantity: products.find(prod => prod.id === p.id)?.quantity || 0,
+    }));
+
     const orders = await this.ordersRepository.create({
       customer,
-      products: findedProducts.map(p => ({ ...p, product_id: p.id })),
+      products: mappedProducts,
     });
+
+    await this.productsRepository.updateQuantity(products);
 
     return orders;
   }

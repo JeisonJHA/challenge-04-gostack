@@ -32,8 +32,8 @@ export default class CreateOrder1589943474465 implements MigrationInterface {
           {
             name: 'OrderCustomer',
             referencedTableName: 'customers',
-            columnNames: ['id'],
-            referencedColumnNames: [''],
+            columnNames: ['customer_id'],
+            referencedColumnNames: ['id'],
             onDelete: 'SET NULL',
             onUpdate: 'CASCADE',
           },

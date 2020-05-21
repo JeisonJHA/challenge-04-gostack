@@ -36,16 +36,6 @@ export default class CreateProduct1589943485949 implements MigrationInterface {
             default: 'now()',
           },
         ],
-        foreignKeys: [
-          {
-            name: 'OrderCustomer',
-            referencedTableName: 'customers',
-            columnNames: ['id'],
-            referencedColumnNames: [''],
-            onDelete: 'SET NULL',
-            onUpdate: 'CASCADE',
-          },
-        ],
       }),
     );
   }
